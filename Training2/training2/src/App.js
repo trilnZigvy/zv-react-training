@@ -1,10 +1,15 @@
-import InputNumber from './component/inputNumber/inputNumber';
-import './App.css';
 
+import './App.css';
+import SimpleModel from './task1/simpleModal'
+import Parent from './task2/parent';
+import InputNumber from './task3/inputNumber/inputNumber';
 function App() {
   return (
     <div className="App">
-      <InputNumber/>
+      <SimpleModel />
+      <Parent />
+      <InputNumber />
+
     </div>
   );
 }
