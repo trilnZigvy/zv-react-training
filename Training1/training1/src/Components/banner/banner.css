@@ -1,0 +1,22 @@
+.full_size{
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.img_banner{
+    position:absolute;
+    left:0;
+    right:0;
+    object-fit:cover;
+    object-position:center bottom;
+    vertical-align:bottom
+}
+
+._ussrz76 {
+    display: inline-block !important;
+    vertical-align: bottom !important;
+    min-height: 1px !important;
+    position: relative !important;
+    background-position: 50% 50% !important;
+    background-repeat: no-repeat !important;
+}

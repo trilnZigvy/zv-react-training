@@ -1,0 +1,10 @@
+.card_area_2{
+    overflow-x: auto !important;
+    display: grid !important;
+    gap: 12px !important;
+    /* column-count: 4; */
+    /* grid-template-rows: repeat(2, auto) !important; */
+    grid-template-columns: repeat(calc(var(--column-count) - 1), calc(100% - 108px)) 100% !important;
+    grid-auto-flow: column !important;
+    scroll-snap-type: x mandatory !important;
+}
