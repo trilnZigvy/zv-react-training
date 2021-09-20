@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import * as _ from "underscore";
 import Country from "../task2/country";
-export default class joke extends Component {
+export default class Joke extends Component {
   constructor(props) {
     super(props);
     this.state = { id: "", type: "", punchline: "", setup: "", last: 0 };

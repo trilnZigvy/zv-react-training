@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import * as _ from "underscore";
-export default class country extends Component {
+export default class Country extends Component {
   constructor(props) {
     super(props);
     this.state = { value: [], searchOption: "name", searchValue: "" };
