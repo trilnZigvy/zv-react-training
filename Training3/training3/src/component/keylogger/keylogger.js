@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./keylogger.css";
 
-class keylogger extends Component {
+class Keylogger extends Component {
   constructor(props) {
     super(props);
     this.state = {

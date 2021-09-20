@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Keylogger from "./../keylogger/keylogger";
 
-class buttonOpen extends Component {
+class ButtonOpen extends Component {
   constructor(props) {
     super(props);
     this.state = { keyLog: false, value: "", keyDown: "" };
