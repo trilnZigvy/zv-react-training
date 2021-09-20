@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Container, Row, Col } from "reactstrap";
 import './header.css'
 import UserSetting from "../Components/userSettings/userSetting";
-export default class header extends Component {
+export default class Header extends Component {
     render() {
         return (
           <div className="header">

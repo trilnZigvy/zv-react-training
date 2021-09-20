@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Col, Container, Row } from "reactstrap";
 import Card2 from "../card2/card2";
 import "./cardArea3.css";
-export default class cardArea3 extends Component {
+export default class CardArea3 extends Component {
   constructor(props) {
     super(props);
     this.state = {

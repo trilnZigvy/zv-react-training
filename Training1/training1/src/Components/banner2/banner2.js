@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Container } from 'reactstrap';
 import './banner2.css'
-export default class banner2 extends Component {
+export default class Banner2 extends Component {
     render() {
         return (
           <div className="_1gw6tte">

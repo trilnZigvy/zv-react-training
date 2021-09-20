@@ -5,7 +5,7 @@ import CardArea2 from '../Components/cardArea2/cardArea2'
 import Banner2 from '../Components/banner2/banner2'
 import CardArea3 from '../Components/cardArea3/cardArea3'
 import LocationBar from '../Components/locationBar/locationBar'
-export default class mainContent extends Component {
+export default class MainContent extends Component {
     render() {
         return (
           <div>

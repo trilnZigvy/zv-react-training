@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './cityBoard.css'
-export default class cityBoard extends Component {
+export default class CityBoard extends Component {
   constructor(props) {
     super(props);
 

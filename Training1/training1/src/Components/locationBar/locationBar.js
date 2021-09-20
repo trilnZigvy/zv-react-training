@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Col, Container, Row, Button } from "reactstrap";
 import CityBoard from "../cityBoard/cityBoard";
 import "./locationBar.css";
-export default class locationBar extends Component {
+export default class LocationBar extends Component {
   constructor(props) {
     super(props);
     this.state = {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class banner extends Component {
+export default class Banner extends Component {
     render() {
         return (
           <div>
