@@ -5,40 +5,42 @@ class buttonOpen extends Component {
   constructor(props) {
     super(props);
     this.state = { keyLog: false, value: "", keyDown: "" };
-    
+    // this.renderKeyLogger = (e) => {
+
+    // };
   }
+  handleKeyLogger = () => {
+    this.setState({ keyLog: !this.state.keyLog });
+  };
   handleChange = (e) => {
     this.setState({ value: e.target.value });
-  }
+  };
 
   handleKeyDown = (e) => {
+    console.log(e);
     if (this.state.keyLog)
       this.setState({
-        keyDown: e.keyCode,
+        keyDown: e.key,
       });
-    // console.log(e.keyCode);
-  }
+    console.log(e.key);
+  };
 
   componentDidMount() {
     window.addEventListener("keydown", this.handleKeyDown);
+    // window.addEventListener("onKeyPress", this.handleKeyDown);
   }
 
-  renderKeyLogger = () => {
-    this.setState({ keyLog: !this.state.keyLog });
-  }
   render() {
     return (
       <div>
         <button
-          onClick={() => {
-            this.renderKeyLogger;
-          }}
+          onClick={this.handleKeyLogger}
         >
           key Logger
         </button>
 
         {this.state.keyLog ? (
-          <Keylogger data={this.state.keyDown} status={this.state.keyLog} />
+          <Keylogger handleClose={this.handleKeyLogger} data={this.state.keyDown} status={this.state.keyLog} />
         ) : (
           <div>Close</div>
         )}
