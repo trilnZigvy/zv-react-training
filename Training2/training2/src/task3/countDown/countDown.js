@@ -14,6 +14,7 @@ class countDown extends Component {
         number: number,
       });
       if (this.state.number == 0) {
+        // this.timer = 0;
         clearInterval(this.timer);
       }
     };
@@ -23,7 +24,7 @@ class countDown extends Component {
       }
     };
     this.stopCount = () => {
-      this.timer = 0;
+      // this.timer = 0;
       clearInterval(this.timer);
     };
   }
@@ -31,6 +32,9 @@ class countDown extends Component {
   // componentWillUpdate(nextProps, nextState) {
   //   nextState.number = nextProps.data;
   // }
+  componentDidMount() {
+    this.start();
+  }
 
   render() {
     return (
@@ -38,7 +42,6 @@ class countDown extends Component {
         {!isNaN(this.props.data) && (
           <div>
             <p>{this.state.number}</p>
-            {this.start()}
             <button type="button" onClick={this.stopCount}>
               stop
             </button>

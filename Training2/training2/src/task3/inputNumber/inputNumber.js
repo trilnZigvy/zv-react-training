@@ -25,8 +25,7 @@ export default class InputNumber extends Component {
           />
         </label>
         <button type="submit" value="Submit" onClick={this.handleClick}>
-          {" "}
-          submit{" "}
+          submit
         </button>
         <ValidCheck data={this.state.setData} />
       </div>
