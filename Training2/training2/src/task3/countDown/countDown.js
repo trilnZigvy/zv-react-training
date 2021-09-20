@@ -8,21 +8,21 @@ class countDown extends Component {
     this.state = {
       number: this.props.data,
     };
-    countDown = () => {
+    this.countDown = () => {
       let number = this.state.number - 1;
-      setState({
+      this.setState({
         number: number,
       });
       if (this.state.number == 0) {
         clearInterval(this.timer);
       }
     };
-    start = () => {
+    this.start = () => {
       if (this.timer == 0 && this.state.number > 0) {
         this.timer = setInterval(this.countDown, 1000);
       }
     };
-    stopCount = () => {
+    this.stopCount = () => {
       this.timer = 0;
       clearInterval(this.timer);
     };
