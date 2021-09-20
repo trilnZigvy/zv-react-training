@@ -4,10 +4,10 @@ import Child from './child'
 export class parent extends Component {
     constructor(props){
         super(props)
-        this.state = {showChild:true}
+        this.state = {showChild:false}
         this.close  =this.close.bind(this)
     }
-    close(){
+    close = () => {
         this.setState({
           showChild: !this.state.showChild,
         });
@@ -25,6 +25,8 @@ export class parent extends Component {
               <Child data={this.state.showChild} handleClose={this.close} />
             )}
           </div>
+
+            
         );
     }
 }
