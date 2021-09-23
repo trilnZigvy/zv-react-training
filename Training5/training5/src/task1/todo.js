@@ -3,6 +3,8 @@ import { TodoTask } from "../component/toDoTask/todoTask";
 import { todoAction } from "../redux/actions/todo.actions";
 // import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { Button } from "reactstrap";
+import './todo.css'
 
 class Todo extends Component {
   constructor(props) {
@@ -10,19 +12,40 @@ class Todo extends Component {
     this.state = { value: "", getCompleted: false, items: [] };
   }
 
-  componentDidMount() {
-    this.props.getAll();
-    this.setState({ items: this.props.items });
-    // console.log("items", this.props.items);
+  async componentDidMount() {
+    await this.props.getAll();
+
+    // await this.setState({ items: this.props.items });
+    // console.log(this.state.items);
   }
 
-  handleCompleted = () => {
-    this.setState({ getCompleted: !this.state.getCompleted });
+  componentDidUpdate(prevProps, prevState) {
+    // this.state.items = this.props.items;
+    if (prevProps.items !== this.props.items) {
+      console.log("props", prevProps);
+      console.log("state", this.props);
+      this.setState({ items: this.props.items });
+    }
+
+    //  this.setState({ items: this.props.items });
+  }
+
+  handleCompleted = async () => {
+    await this.setState({ getCompleted: !this.state.getCompleted });
+    if (this.state.getCompleted) {
+      this.setState({
+        items: this.props.items.filter((task) => task.completed === true),
+      });
+    } else {
+      this.setState({
+        items: this.props.items,
+      });
+    }
+    
   };
 
   handleSubmit = (e) => {
     if (this.state.value) {
-      console.log("val: ", this.state.value);
       this.props.addTask(this.state.value);
 
       e.preventDefault();
@@ -36,12 +59,11 @@ class Todo extends Component {
   };
 
   handleSearch = (e) => {
-    if (e.target.value == "") {
-      console.log("as");
+    if (e.target.value === "") {
       this.setState({ items: this.props.items });
     } else {
       this.setState({
-        items: this.state.items.filter(
+        items: this.props.items.filter(
           (task) => task.value.search(e.target.value) > -1
         ),
       });
@@ -51,7 +73,6 @@ class Todo extends Component {
   render() {
     return (
       <div className="todoapp stack-large">
-        {console.log(this.props.items)}
         <h1>TodoMatic</h1>
         <form onSubmit={this.handleSubmit}>
           <h2 className="label-wrapper">
@@ -59,18 +80,21 @@ class Todo extends Component {
               What needs to be done?
             </label>
           </h2>
-          <input
-            type="text"
-            id="new-todo-input"
-            className="input input__lg"
-            name="text"
-            autoComplete="off"
-            value={this.state.value}
-            onChange={this.handleChange}
-          />
-          <button type="submit" className="btn btn__primary btn__lg">
+          <div>
+            <input
+              // style={{ width: "92.5%" }}
+              type="text"
+              id="new-todo-input"
+              className="input input__lg"
+              name="text"
+              autoComplete="off"
+              value={this.state.value}
+              onChange={this.handleChange}
+            />
+          </div>
+          <Button type="submit" className="btn btn__primary btn__lg">
             Add
-          </button>
+          </Button>
         </form>
         <div className="filters btn-group stack-exception">
           <button type="button" className="btn toggle-btn" aria-pressed="true">
@@ -104,6 +128,7 @@ class Todo extends Component {
             autoComplete="off"
             placeholder="Search By Name"
             // value={this.state.value}
+            style={{ width: "92%" }}
             onChange={this.handleSearch}
           />
         </div>
@@ -112,32 +137,18 @@ class Todo extends Component {
           className="todo-list stack-large stack-exception"
           aria-labelledby="list-heading"
         >
-          {console.log(this.state.items)}
+          {!this.state.items ? <div>Loading</div> : <div></div>}
           {this.state.items &&
             this.state.items.map((task) => {
-              console.log("completed", this.state.getCompleted);
-              if (this.state.getCompleted) {
-                if (task.completed) {
-                  return (
-                    <TodoTask
-                      key={task.id}
-                      task={task}
-                      value={task.value}
-                      completed={task.completed}
-                    />
-                  );
-                }
-              } else {
-                return (
-                  <TodoTask
-                    key={task.id}
-                    task={task}
-                    value={task.value}
-                    completed={task.completed}
-                  />
-                );
-              }
-              return <div></div>;
+              // console.log("completed", this.state.getCompleted);
+              return (
+                <TodoTask
+                  key={task.id}
+                  task={task}
+                  value={task.value}
+                  completed={task.completed}
+                />
+              );
             })}
 
           {/* <TodoTask value={"Yolo"} completed={true} />
@@ -150,7 +161,6 @@ class Todo extends Component {
 }
 
 function mapState(state) {
-  console.log("state", state.todoReducer);
   const { items } = state.todoReducer;
   //   console.log("items",items);
   return { items };

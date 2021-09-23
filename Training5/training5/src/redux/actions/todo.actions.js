@@ -4,14 +4,13 @@ export const todoAction = {
   getAll,
   addTask,
   updateTask,
-  deleteTask
+  deleteTask,
 };
 
-function getAll(){
-  console.log("getAll");
-  return (dispatch) => {
+function getAll() {
+  return async (dispatch) => {
     dispatch(request());
-    todoService.getAll().then(
+    await todoService.getAll().then(
       (tasks) => dispatch(success(tasks)),
       (error) => dispatch(failure(error.toString()))
     );
@@ -25,7 +24,7 @@ function getAll(){
   function failure(error) {
     return { type: todoConst.GET_FAILURE, error };
   }
-};
+}
 
 function addTask(task) {
   return (dispatch) => {
@@ -48,7 +47,7 @@ function addTask(task) {
   function failure(error) {
     return { type: todoConst.ADD_FAILURE, error };
   }
-};
+}
 
 function updateTask(id, task, completed, createAt) {
   return (dispatch) => {
@@ -71,8 +70,7 @@ function updateTask(id, task, completed, createAt) {
   function failure(error) {
     return { type: todoConst.UPDATE_FAILURE, error };
   }
-};
-
+}
 
 function deleteTask(id) {
   return (dispatch) => {
@@ -95,4 +93,4 @@ function deleteTask(id) {
   function failure(error) {
     return { type: todoConst.DELETE_FAILURE, error };
   }
-};
+}

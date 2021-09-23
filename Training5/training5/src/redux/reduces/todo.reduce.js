@@ -11,9 +11,6 @@ export function todoReducer(state = {}, action) {
     case todoConst.ADD_REQUEST:
       return state;
     case todoConst.ADD_SUCCESS:
-      
-      let a = { ...state, items: [...state.items, action.task] };
-      console.log("action", a);
       return { ...state, items: [...state.items, action.task] };
     case todoConst.ADD_FAILURE:
       return state;

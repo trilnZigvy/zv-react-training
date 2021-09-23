@@ -1,0 +1,16 @@
+.Login{
+    text-align: center;
+}
+
+.padding-6px{
+    padding: 6px;
+}
+
+.inline-flex{
+    display: inline-flex;
+}
+
+.btn{
+    border: 1px solid;
+    border-radius: 5px;
+}

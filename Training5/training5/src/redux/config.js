@@ -6,4 +6,12 @@ export const config = {
     delete: "/todos-mock-api",
     update: "/todos-mock-api",
   },
+  login: {
+    getWithEmailNPass: "/login-mock-api",
+    getByid: "/login-mock-api",
+    getall: "/login-mock-api",
+    signUp: "/login-mock-api",
+    delete: "/login-mock-api",
+    update: "/login-mock-api",
+  },
 };

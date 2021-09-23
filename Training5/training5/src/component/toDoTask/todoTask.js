@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Button } from "reactstrap";
 import { todoAction } from "../../redux/actions/todo.actions";
 class TodoTask extends Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class TodoTask extends Component {
   render() {
     return (
       <li className="todo stack-small">
-        <div className="c-cb" style={{ paddingTop: "7px" }}>
+        <div className="c-cb">
           {/* {console.log(this.props)} */}
           <input
             id="todo-0"
@@ -43,7 +44,7 @@ class TodoTask extends Component {
           />
           <label></label>
           <input
-            style={{width:"80%"}}
+            style={{ width: "80%" }}
             type="text"
             name="text"
             className="todo-label"
@@ -53,16 +54,17 @@ class TodoTask extends Component {
           />
         </div>
         <div className="btn-group">
-          <button onClick={this.handleUpdate} type="button" className="btn">
+          <Button onClick={this.handleUpdate} type="button" className="btn">
             update <span className="visually-hidden">{this.props.value}</span>
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
-            className="btn btn__danger"
+            // className="btn btn__danger"
+            color="danger"
             onClick={this.handleDelete}
           >
             Delete <span className="visually-hidden">{this.props.value}</span>
-          </button>
+          </Button>
         </div>
       </li>
     );
