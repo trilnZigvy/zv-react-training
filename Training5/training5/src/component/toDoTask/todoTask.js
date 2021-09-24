@@ -10,41 +10,42 @@ class TodoTask extends Component {
   }
 
   handleDelete = () => {
-      this.props.deleteTask(this.props.task.id);
-  }
+    this.props.deleteTask(this.props.task.id);
+  };
 
   handleCheckBox = (e) => {
     //   console.log(e.target.checked);
-    this.setState({completed: e.target.checked})
-  }
+    this.setState({ completed: e.target.checked });
+  };
 
   handleValue = (e) => {
     this.setState({ value: e.target.value });
-  }
+  };
 
   handleUpdate = () => {
-      this.props.updateTask(
-        this.props.task.id,
-        this.state.value,
-        this.state.completed,
-        this.props.task.createAt
-      );
-  }
+    this.props.updateTask(
+      this.props.task.id,
+      this.state.value,
+      this.state.completed,
+      this.props.task.createAt
+    );
+  };
 
   render() {
     return (
-      <li className="todo stack-small">
+      <li className="todo stack-small" style={{ marginTop: "10px" }}>
         <div className="c-cb">
           {/* {console.log(this.props)} */}
           <input
             id="todo-0"
+            style={{ height: "15px", width: "15px" }}
             type="checkbox"
             defaultChecked={this.props.completed}
             onChange={this.handleCheckBox}
           />
           <label></label>
           <input
-            style={{ width: "80%" }}
+            style={{ width: "80%", marginLeft:"10px" }}
             type="text"
             name="text"
             className="todo-label"
@@ -53,8 +54,13 @@ class TodoTask extends Component {
             onChange={this.handleValue}
           />
         </div>
-        <div className="btn-group">
-          <Button onClick={this.handleUpdate} type="button" className="btn">
+        <div>
+          <Button
+            onClick={this.handleUpdate}
+            type="button"
+            className="btn"
+            style={{ margin: "10px" }}
+          >
             update <span className="visually-hidden">{this.props.value}</span>
           </Button>
           <Button
@@ -62,6 +68,7 @@ class TodoTask extends Component {
             // className="btn btn__danger"
             color="danger"
             onClick={this.handleDelete}
+            style={{ margin: "10px" }}
           >
             Delete <span className="visually-hidden">{this.props.value}</span>
           </Button>
@@ -85,7 +92,7 @@ function mapState(state) {
 
 const actionCreators = {
   deleteTask: todoAction.deleteTask,
-  updateTask: todoAction.updateTask
+  updateTask: todoAction.updateTask,
 };
 
 const connectedTodos = connect(mapState, actionCreators)(TodoTask);

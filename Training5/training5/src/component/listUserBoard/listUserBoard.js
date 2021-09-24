@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Col, Row } from "reactstrap";
+import { Col, Container, Row } from "reactstrap";
 import { userAction } from "../../redux/actions/user.action";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-} from "react-router-dom";
-import {UserProfile} from "../userProfile/userProfile";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { UserProfile } from "../userProfile/userProfile";
 // import Invalid from "../invalid/invalid";
 class ListUserBoard extends Component {
   constructor(props) {
@@ -19,10 +14,10 @@ class ListUserBoard extends Component {
   async componentWillMount() {
     await this.props.getAll(this.props.user.role);
     await this.setState({ listUsers: this.props.listUsers });
-    if(this.props.error){
+    if (this.props.error) {
       alert("You have not permission to do it");
       console.log(this.props);
-      this.props.history.push("/app")
+      this.props.history.push("/app");
     }
   }
 
@@ -37,51 +32,58 @@ class ListUserBoard extends Component {
   render() {
     return (
       <div>
-        <Router>
-          <Row>
-            <Col xs={3}>
-              <ul>
-                {this.state.listUsers &&
-                  this.state.listUsers.map((user) => {
-                    return (
-                      <li style={{ marginTop: "10px" }}>
-                        <Link
-                          //
-                          to={`/app/users/${user.id}`}
-                        >
-                          {user.fullName}
-                        </Link>
-                      </li>
-                    );
-                  })}
-              </ul>
-            </Col>
-            <Col>
-              <Switch>
-                <Route
-                  //
+        <Container>
+          <Router>
+            <Row>
+              <Col style={{ borderRight: "1px solid" }} xs={3}>
+                <ul>
+                  {this.state.listUsers &&
+                    this.state.listUsers.map((user) => {
+                      return (
+                        <li style={{ marginTop: "10px" }}>
+                          <Link
+                            //
+                            to={`/app/users/${user.id}`}
+                          >
+                            {user.fullName}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                </ul>
+              </Col>
+              <Col>
+                <Switch>
+                  <Route
+                    //
 
-                  path="/app/users/:id"
-                  //   component={Todo}
-                  render={(props) =>  <UserProfile listUsers={this.props.listUsers} {...props} />}
-                />
-                {/* {this.state.listUsers &&
+                    path="/app/users/:id"
+                    //   component={Todo}
+                    render={(props) => (
+                      <UserProfile
+                        listUsers={this.props.listUsers}
+                        {...props}
+                      />
+                    )}
+                  />
+                  {/* {this.state.listUsers &&
                   this.state.listUsers.map((user) => {
                     console.log(user);
                     return <div></div>;
                   })} */}
-                {/* <Route exact path="/task1" component={Todo} /> */}
-                {/* <Route
+                  {/* <Route exact path="/task1" component={Todo} /> */}
+                  {/* <Route
                   path="/app/user/*"
                   // component={Invalid}
                   render={(props) => (
                     <Invalid listUsers={this.state.listUsers} {...props} />
                   )}
                 /> */}
-              </Switch>
-            </Col>
-          </Row>
-        </Router>
+                </Switch>
+              </Col>
+            </Row>
+          </Router>
+        </Container>
       </div>
     );
   }

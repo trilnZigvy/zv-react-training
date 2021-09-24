@@ -4,6 +4,7 @@ import { todoAction } from "../redux/actions/todo.actions";
 // import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { Button } from "reactstrap";
+
 import './todo.css'
 
 class Todo extends Component {
@@ -72,7 +73,7 @@ class Todo extends Component {
 
   render() {
     return (
-      <div className="todoapp stack-large">
+      <div className="text-align-center">
         <h1>TodoMatic</h1>
         <form onSubmit={this.handleSubmit}>
           <h2 className="label-wrapper">
@@ -84,8 +85,8 @@ class Todo extends Component {
             <input
               // style={{ width: "92.5%" }}
               type="text"
-              id="new-todo-input"
-              className="input input__lg"
+              id="input-box"
+              className="input-box"
               name="text"
               autoComplete="off"
               value={this.state.value}
@@ -93,37 +94,42 @@ class Todo extends Component {
             />
           </div>
           <Button type="submit" className="btn btn__primary btn__lg">
-            Add
+            Add Task
           </Button>
         </form>
         <div className="filters btn-group stack-exception">
-          <button type="button" className="btn toggle-btn" aria-pressed="true">
+          <Button
+            type="button"
+            className="btn toggle-btn"
+            aria-pressed="true"
+            style={{ margin: "10px", borderRadius: "5px" }}
+          >
             <span className="visually-hidden">Show </span>
-            <span>all</span>
+            <span>All</span>
             <span className="visually-hidden"> tasks</span>
-          </button>
-          <button type="button" className="btn toggle-btn" aria-pressed="false">
+          </Button>
+          {/* <button type="button" className="btn toggle-btn" aria-pressed="false">
             <span className="visually-hidden">Show </span>
             <span>Search</span>
             <span className="visually-hidden"> tasks</span>
-          </button>
+          </button> */}
 
-          <button
+          <input
             onClick={this.handleCompleted}
-            type="button"
-            className="btn toggle-btn"
+            type="checkbox"
+            className="btn"
+            style={{ margin: "10px", height:"40px", width:"40px" }}
             aria-pressed="false"
-          >
-            <span className="visually-hidden">Show </span>
-            <span>Completed</span>
-            <span className="visually-hidden"> tasks</span>
-          </button>
+          />
+          <span className="visually-hidden">Show </span>
+          <span style={{lineHeight: 3.3}}>Completed</span>
+          <span className="visually-hidden"> tasks</span>
         </div>
         <div>
           <input
             type="text"
             id="new-todo-input"
-            className="input input__lg"
+            className="search-box"
             name="text"
             autoComplete="off"
             placeholder="Search By Name"

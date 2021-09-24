@@ -3,19 +3,21 @@ import Header from "../../component/header/header";
 import { connect } from "react-redux";
 import { userAction } from "../../redux/actions/user.action";
 import MainContent from "../../component/mainContent/mainContent";
+import { Container } from "reactstrap";
+import Footer from "../../component/footer/footer";
 class AppPage extends Component {
   // constructor(props) {
   //   super(props);
   // }
 
-  shouldComponentUpdate(){
+  shouldComponentUpdate() {
     return true;
   }
 
-  componentWillMount(){
-      if (!this.props.user) {
-        this.props.history.push("/login");
-      }
+  componentWillMount() {
+    if (!this.props.user) {
+      this.props.history.push("/login");
+    }
   }
   componentDidUpdate() {
     if (!this.props.user) {
@@ -24,10 +26,17 @@ class AppPage extends Component {
   }
   render() {
     return (
-      <div>
-        <Header  key={new Date().getTime()} user={this.props.user} logout={this.props.logout} />
+      <Container>
+        <Header
+          key={new Date().getTime()}
+          user={this.props.user}
+          logout={this.props.logout}
+        />
+        <hr/>
         <MainContent />
-      </div>
+        <hr />
+        <Footer />
+      </Container>
     );
   }
 }

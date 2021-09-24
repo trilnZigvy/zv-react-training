@@ -1,11 +1,11 @@
 import React from 'react'
 
-function footer() {
+function Footer() {
     return (
         <div>
-            
+            Zigvy Corp
         </div>
     )
 }
 
-export default footer
+export default Footer
