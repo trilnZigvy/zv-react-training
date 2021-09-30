@@ -1,0 +1,12 @@
+.text-align-center{
+    text-align: center;
+}
+
+.input-box{
+    width: 500px;
+    margin: 10px
+}
+
+ul{
+    list-style: none;
+}

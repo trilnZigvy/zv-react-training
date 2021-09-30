@@ -7,7 +7,6 @@ let user = JSON.parse(localStorage.getItem("user"));
 const initialState = user ? { loggedIn: false, user } : {};
 
 export function loginReducer(state = initialState, action) {
-  console.log(state);
   // console.log(action);
   switch (action.type) {
     case loginConst.LOGIN_REQUEST:

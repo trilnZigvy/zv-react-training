@@ -26,7 +26,6 @@ class LoginPage extends Component {
       e.preventDefault();
       return;
     } else {
-      console.log("aloooo");
       this.props.login(this.state.email, this.state.password);
     }
     e.preventDefault();

@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function footer() {
-    return (
-        <div>
-            
-        </div>
-    )
+  return <div>Zigvy Corp</div>;
 }
 
-export default footer
+export default footer;

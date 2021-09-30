@@ -39,9 +39,9 @@ function logout() {
   localStorage.removeItem("user");
   return {};
 }
-function signUp() {}
-function updateUser() {}
-function deleteUser() {}
+// function signUp() {}
+// function updateUser() {}
+// function deleteUser() {}
 
 function* loginFlow(action) {
   const { email, password } = action;

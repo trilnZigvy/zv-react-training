@@ -3,7 +3,8 @@ import Header from "../../components/header/header";
 import { connect } from "react-redux";
 // import { userAction } from "../../redux/actions/user.action";
 import { loginAction } from "../../redux-saga/login/actions";
-
+import { Container } from "reactstrap";
+import Footer from "../../components/footer/footer";
 import MainContent from "../../components/mainContent/mainContent";
 class AppPage extends Component {
   // constructor(props) {
@@ -26,10 +27,16 @@ class AppPage extends Component {
   }
   render() {
     return (
-      <div>
-        <Header  key={new Date().getTime()} user={this.props.user} logout={this.props.logout} />
+      <Container>
+        <Header
+          key={new Date().getTime()}
+          user={this.props.user}
+          logout={this.props.logout}
+        />
         <MainContent />
-      </div>
+        <hr />
+        <Footer />
+      </Container>
     );
   }
 }

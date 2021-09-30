@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import {
   Col,
-  Container,
   Row,
   ButtonDropdown,
   DropdownToggle,
@@ -9,8 +8,7 @@ import {
   DropdownItem,
 } from "reactstrap";
 
-
-import './header.css'
+import "./header.css";
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -21,19 +19,26 @@ class Header extends Component {
   };
 
   logOut = () => {
-    this.props.logout()
-  }
+    this.props.logout();
+  };
   render() {
     // const toggle = () => setOpen(!dropdownOpen);
     return (
-      <Container className="header">
+      <div className="header">
         <Row>
           <Col>Zigvy Logo</Col>
           <Col style={{ textAlign: "right" }}>
-            <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-              <DropdownToggle caret>User</DropdownToggle>
+            <ButtonDropdown
+              isOpen={this.state.dropdownOpen}
+              toggle={this.toggle}
+            >
+              <DropdownToggle caret>
+                {this.props.user ? this.props.user.fullName : "user"}
+              </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem header>{this.props.user ? this.props.user.fullName: 'user'}</DropdownItem>
+                <DropdownItem header>
+                  {this.props.user ? this.props.user.fullName : "user"}
+                </DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem onClick={this.logOut}>Log out</DropdownItem>
               </DropdownMenu>
@@ -41,7 +46,7 @@ class Header extends Component {
           </Col>
         </Row>
         <hr></hr>
-      </Container>
+      </div>
     );
   }
 }
