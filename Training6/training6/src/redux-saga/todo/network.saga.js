@@ -18,6 +18,7 @@ function* startChannelNetwork(){
 
     while(true){
         const connectInfo = yield take(channelNetwork)
+        console.log("connet info", connectInfo);
         yield put(todoAction.setNetworkStatus(connectInfo))
     }
 }

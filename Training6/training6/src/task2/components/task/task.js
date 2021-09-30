@@ -24,7 +24,7 @@ class Task extends Component {
     };
   }
   componentDidMount(){
-    console.log("thats",this.props.task);
+    // console.log("thats",this.props.task);
   }
   static getDerivedStateFromProps(nextProps, prevState) {
     // console.log("this", nextProps.task.status);

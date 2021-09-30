@@ -156,7 +156,7 @@ function* submitWatcherChannel() {
   // const requestChan = yield actionChannel(todoConst.NE);
   // yield take(requestChan);
   while (true) {
-    console.log("on going", store.getState().todoReducer.queue);
+    // console.log("on going", store.getState().todoReducer.queue); 
     if (
       store.getState().todoReducer.queue.length &&
       store.getState().todoReducer.online
